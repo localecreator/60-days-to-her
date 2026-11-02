@@ -41,19 +41,19 @@ nav.links a{padding:10px 14px;border-radius:999px;text-decoration:none;font-weig
 nav.links a:hover{background:var(--lav)}
 
 /* hero */
-.hero{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-end;padding-top:40px;padding-bottom:72px}
-.hero-copy{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px}
-.hero h1{font-family:var(--serif);font-size:clamp(44px,6vw,80px);line-height:1;letter-spacing:-.01em;max-width:12ch}
+.hero{display:flex;flex-wrap:wrap;gap:32px;align-items:center;padding-top:16px;padding-bottom:48px}
+.hero-copy{flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(36px,4.2vw,56px);line-height:1.02;letter-spacing:-.01em;max-width:16ch}
 .hero h1 em{color:var(--plum)}
-.hero p.sub{margin:0;font-size:20px;max-width:560px;color:var(--ink-2)}
+.hero p.sub{margin:0;font-size:17px;max-width:520px;color:var(--ink-2)}
 .row{display:flex;flex-wrap:wrap;gap:12px}
-.today-card{flex:1 1 340px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 50px -30px rgba(91,42,94,.45)}
+.today-card{flex:1 1 300px;max-width:400px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:10px;box-shadow:0 20px 50px -30px rgba(91,42,94,.45)}
 .today-head{display:flex;justify-content:space-between;align-items:baseline}
-.today-head .n{font-family:var(--serif);font-size:44px;line-height:1}
+.today-head .n{font-family:var(--serif);font-size:32px;line-height:1}
 .bar{height:8px;border-radius:999px;background:var(--lav-2);overflow:hidden}
 .bar span{display:block;height:100%;border-radius:999px;background:var(--plum)}
-.today-title{margin:0;font-size:22px;font-weight:600}
-.today-card ul{margin:0;padding-left:20px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.today-title{margin:0;font-size:18px;font-weight:600}
+.today-card ul{margin:0;padding-left:18px;color:var(--ink-2);display:flex;flex-direction:column;gap:4px;font-size:14px;line-height:1.45}
 .soft-btn{align-self:flex-start;min-height:44px;padding:10px 18px;border-radius:14px;border:1px solid #D4C2E3;background:var(--lav);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
 
 /* calendar */
@@ -185,7 +185,7 @@ dialog::backdrop{background:rgba(42,22,48,.55)}
       <div class="bar"><span id="today-bar" style="width:2%"></span></div>
       <p class="eyebrow" id="today-status"></p>
       <p class="today-title" id="today-title">Loading…</p>
-      <ul id="today-list"></ul>
+      <p id="today-list" style="margin:0;font-size:14px;color:var(--ink-2)"></p>
       <button class="soft-btn" type="button" data-open-today>See the full day</button>
     </aside>
   </section>
@@ -401,8 +401,8 @@ function renderToday() {
   $("#today-bar").style.width = Math.round(t / TOTAL * 100) + "%";
   $("#today-status").textContent = beforeStart() ? "Starts Nov 1" : `${weekLabel(t)} · ${fmt(dateFor(t), { weekday: "long", month: "short", day: "numeric" })}`;
   $("#today-title").textContent = d ? d.title : "Coming soon";
-  const ul = $("#today-list"); ul.replaceChildren();
-  (d ? d.todos.slice(0, 3) : ["Today's to-dos drop soon"]).forEach(s => ul.append(el("li", { text: s })));
+  const parts = d ? [d.todos.length ? `${d.todos.length} to-do${d.todos.length > 1 ? "s" : ""}` : "", d.prompt ? "journal prompt" : "", d.verse ? "verse" : "", d.say ? "affirmation" : ""].filter(Boolean) : [];
+  $("#today-list").textContent = d ? parts.join(" · ") : "Today's to-dos drop soon";
 }
 
 function renderCalendar() {
