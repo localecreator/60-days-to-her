@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>60 Days to HER</title>
+<meta name="description" content="Can your life completely change in 60 days? Daily to-dos, journal prompts, the playlist and every resource from @remotelykrista's 60 Days to HER experiment.">
+<meta property="og:title" content="60 Days to HER">
+<meta property="og:description" content="can your life completely change in 60 days? well im experimenting to find out">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c.6 4.6 2.8 7.4 7.4 8.2-4.6.8-6.8 3.6-7.4 8.2-.6-4.6-2.8-7.4-7.4-8.2C9.2 9.4 11.4 6.6 12 2z' fill='%235B2A5E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#5B2A5E; --ink:#2A1630; --ink-2:#4A3A52; --muted:#6B5A72;
+  --bg:#F7F3FA; --card:#FFFFFF; --line:#E3D8EA; --lav:#F3ECF8; --lav-2:#EFE6F5; --lilac:#C9A0DC; --done:#E9DEF3;
+  --serif:'Instrument Serif', Georgia, serif; --sans:'DM Sans', system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--plum)} a:hover{color:#3A1640}
+img,iframe{max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.eyebrow{margin:0;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-weight:400;margin:0}
+.serif{font-family:var(--serif)}
+h2.section{font-family:var(--serif);font-size:clamp(40px,6vw,56px);line-height:1}
+.lede{margin:8px 0 0;color:var(--ink-2);max-width:560px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:999px;border:0;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.btn-primary{background:var(--plum);color:#fff} .btn-primary:hover{background:#4A2050;color:#fff}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink);background:transparent} .btn-ghost:hover{background:var(--ink);color:#fff}
+:focus-visible{outline:3px solid var(--lilac);outline-offset:2px}
+
+/* nav */
+header.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:20px;padding-bottom:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--serif);font-size:26px;line-height:1}
+nav.links{display:flex;flex-wrap:wrap;gap:2px}
+nav.links a{padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px}
+nav.links a:hover{background:var(--lav)}
+
+/* hero */
+.hero{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-end;padding-top:40px;padding-bottom:72px}
+.hero-copy{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.hero h1{font-family:var(--serif);font-size:clamp(52px,9vw,120px);line-height:.95;letter-spacing:-.01em}
+.hero h1 em{color:var(--plum)}
+.hero p.sub{margin:0;font-size:20px;max-width:560px;color:var(--ink-2)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.today-card{flex:1 1 340px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 50px -30px rgba(91,42,94,.45)}
+.today-head{display:flex;justify-content:space-between;align-items:baseline}
+.today-head .n{font-family:var(--serif);font-size:44px;line-height:1}
+.bar{height:8px;border-radius:999px;background:var(--lav-2);overflow:hidden}
+.bar span{display:block;height:100%;border-radius:999px;background:var(--plum)}
+.today-title{margin:0;font-size:22px;font-weight:600}
+.today-card ul{margin:0;padding-left:20px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.soft-btn{align-self:flex-start;min-height:44px;padding:10px 18px;border-radius:14px;border:1px solid #D4C2E3;background:var(--lav);color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+
+/* calendar */
+.band{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cal-wrap{padding-top:72px;padding-bottom:72px;display:flex;flex-direction:column;gap:32px}
+.cal-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--ink-2)}
+.legend span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px}
+.month h3{font-size:20px;font-weight:600;margin-bottom:12px}
+.dow,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.dow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:6px}
+.day{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:4px;width:100%;min-height:72px;padding:8px 9px;border-radius:12px;font:inherit;text-align:left;cursor:pointer;background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.day .num{font-size:18px;font-weight:600;line-height:1}
+.day .lbl{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:500;line-height:1.1}
+.day.future{background:transparent;color:var(--muted);border:1px dashed #CDBCD8}
+.day.done{background:var(--done);border-color:#D4C2E3}
+.day.today{background:var(--plum);color:#fff;border-color:var(--plum)}
+.day:hover{transform:translateY(-1px);box-shadow:0 6px 16px -10px rgba(91,42,94,.6)}
+.blank{min-height:72px;padding:8px 9px;font-size:18px;font-weight:600;color:#CDBCD8}
+@media (max-width:480px){.day,.blank{min-height:56px;padding:6px}.day .lbl{font-size:10px}.day .num{font-size:16px}}
+
+/* playlist */
+.playlist{background:var(--ink);color:var(--bg);border-radius:32px;padding:clamp(24px,4vw,40px);display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+.playlist .copy{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.playlist .player{flex:1 1 380px;min-width:0}
+.playlist .player iframe{width:100%;height:380px;border:0;border-radius:16px;display:block}
+.playlist .eyebrow{color:var(--lilac)}
+.playlist h2{font-family:var(--serif);font-size:clamp(40px,6vw,56px);line-height:1}
+.playlist p{margin:0;color:#D9CCE2}
+.btn-lilac{background:var(--lilac);color:var(--ink);align-self:flex-start} .btn-lilac:hover{background:#B88BCF;color:var(--ink)}
+
+/* resources */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px}
+.res{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.res .tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--lav);color:var(--plum)}
+.res h3{font-family:var(--serif);font-size:34px;line-height:1.05}
+.res p{margin:0;color:var(--ink-2);flex:1}
+.res a.go{align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;font-weight:600}
+.res.soon a.go{color:var(--muted);text-decoration:none;pointer-events:none}
+.res.featured{background:var(--plum);color:#fff;border-color:var(--plum)}
+.res.featured .tag{background:rgba(255,255,255,.18);color:#fff}
+.res.featured p{color:#F1E6F6}
+.res.featured a.go{background:#fff;color:var(--ink);padding:10px 20px;border-radius:999px;text-decoration:none}
+.res.more{border:1.5px dashed #CDBCD8;background:transparent;justify-content:center;color:var(--muted);gap:8px}
+
+/* notes */
+.notes-band{background:var(--lav-2)}
+.notes{display:flex;flex-wrap:wrap;gap:48px;padding-top:72px;padding-bottom:72px}
+.notes .intro{flex:1 1 300px;min-width:0}
+.notes ol{flex:999 1 520px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.note{background:var(--card);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.note p{margin:0;font-size:18px}
+
+/* signup */
+.signup{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px}
+.signup .field{flex:999 1 320px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.signup label{font-weight:600;font-size:18px}
+.signup input{min-height:48px;padding:12px 16px;border-radius:14px;border:1px solid #CDBCD8;font:inherit;background:#FBF8FD;color:var(--ink)}
+.signup button{flex:1 1 160px;border-radius:14px}
+.signup .msg{flex-basis:100%;margin:0;font-size:15px;color:var(--plum);min-height:1em}
+footer.bottom{padding-top:72px;padding-bottom:56px;display:flex;flex-direction:column;gap:32px}
+footer.bottom p.bio{margin:0;max-width:640px;color:var(--ink-2)}
+footer.bottom .ig{font-weight:600}
+
+/* modal */
+dialog{border:0;padding:0;border-radius:28px;width:min(560px,calc(100% - 32px));max-height:88vh;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(42,22,48,.55)}
+.m{padding:32px;display:flex;flex-direction:column;gap:20px}
+@media (max-width:480px){.m{padding:22px}}
+.m-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.m-head h2{font-family:var(--serif);font-size:clamp(34px,7vw,44px);line-height:1}
+.x{flex:0 0 auto;width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pill{margin:0;padding:10px 14px;border-radius:12px;background:var(--lav);color:var(--plum);font-size:14px;font-weight:500}
+.m h4{margin:0 0 10px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.todo{display:flex;align-items:center;gap:12px;min-height:44px;padding:6px 12px;border-radius:12px;background:#FBF8FD;margin-bottom:8px}
+.todo input{width:20px;height:20px;accent-color:var(--plum);flex:0 0 auto}
+.todo label{flex:1;cursor:pointer}
+.todo input:checked + label{color:var(--muted);text-decoration:line-through}
+.prompt{padding:20px;border-radius:18px;background:var(--lav)}
+.prompt h4{color:var(--plum)}
+.prompt p{margin:0;font-family:var(--serif);font-size:26px;line-height:1.2}
+.verse{padding:20px;border-radius:18px;border:1px solid var(--line)}
+.verse h4{color:var(--plum)}
+.verse p{margin:0;line-height:1.6;color:var(--ink-2)}
+.how{padding:20px;border-radius:18px;background:var(--ink);color:var(--bg);display:flex;flex-direction:column;gap:10px}
+.how h4{color:var(--lilac);margin:0}
+.how p{margin:0;line-height:1.6}
+.how a{align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;padding:10px 18px;border-radius:999px;background:var(--lilac);color:var(--ink);text-decoration:none;font-weight:600}
+.say p{margin:0;font-size:18px;font-style:italic;white-space:pre-line}
+.soon-card{padding:24px;border-radius:18px;border:1.5px dashed #CDBCD8;color:var(--ink-2)}
+.soon-card p{margin:0}
+.m-nav{display:flex;justify-content:space-between;gap:12px}
+.m-nav button{min-height:44px;padding:10px 18px;border-radius:999px;font:inherit;font-weight:600;cursor:pointer}
+.m-nav .prev{border:1px solid var(--line);background:#fff;color:var(--ink)}
+.m-nav .next{border:0;background:var(--plum);color:#fff}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c.6 4.6 2.8 7.4 7.4 8.2-4.6.8-6.8 3.6-7.4 8.2-.6-4.6-2.8-7.4-7.4-8.2C9.2 9.4 11.4 6.6 12 2z" fill="#5B2A5E"/></svg>
+      60 Days to HER
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#calendar">Calendar</a>
+      <a href="#playlist">Playlist</a>
+      <a href="#resources">Resources</a>
+      <a href="#notes">Field notes</a>
+    </nav>
+  </header>
+
+  <section id="top" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Nov 1 to Dec 30, 2026 · a @remotelykrista experiment</p>
+      <h1>can your life completely change in <em>60 days?</em></h1>
+      <p class="sub">well im experimenting to find out. Everything I'm using, reading and listening to lives here, so you can steal it all and run your own version alongside me.</p>
+      <div class="row">
+        <button class="btn btn-primary" type="button" data-open-today>Open today's to-dos</button>
+        <a class="btn btn-ghost" href="#resources">Grab the free guide</a>
+      </div>
+    </div>
+    <aside class="today-card" aria-label="Today">
+      <div class="today-head"><span class="n" id="today-n">Day 1</span><span style="font-size:14px;color:var(--muted)">of 60</span></div>
+      <div class="bar"><span id="today-bar" style="width:2%"></span></div>
+      <p class="eyebrow" id="today-status"></p>
+      <p class="today-title" id="today-title">Loading…</p>
+      <ul id="today-list"></ul>
+      <button class="soft-btn" type="button" data-open-today>See the full day</button>
+    </aside>
+  </section>
+</div>
+
+<section id="calendar" class="band">
+  <div class="wrap cal-wrap">
+    <div class="cal-top">
+      <div>
+        <h2 class="section">The 60 days</h2>
+        <p class="lede">Tap any day for the to-dos, journal prompt and affirmation. New days get filled in as I live them.</p>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--plum)"></i>Today</span>
+        <span><i class="sw" style="background:var(--done);border:1px solid #D4C2E3"></i>You finished it</span>
+        <span><i class="sw" style="border:1px dashed #B8A3C6"></i>Coming soon</span>
+      </div>
+    </div>
+    <div class="months" id="months"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section id="playlist" style="padding:72px 0">
+    <div class="playlist">
+      <div class="copy">
+        <p class="eyebrow">The soundtrack</p>
+        <h2 id="pl-name">manifest that shit</h2>
+        <p id="pl-blurb">What I'm playing on morning walks, getting-ready sessions and the days I need a little push. I add songs as the 60 days go.</p>
+        <a class="btn btn-lilac" id="pl-link" href="https://open.spotify.com/playlist/34g43GUHbwLuPQw4116a1x" target="_blank" rel="noopener">Open in Spotify</a>
+      </div>
+      <div class="player">
+        <iframe id="pl-embed" title="Spotify playlist" src="https://open.spotify.com/embed/playlist/34g43GUHbwLuPQw4116a1x?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources" style="padding-bottom:72px;display:flex;flex-direction:column;gap:32px">
+    <div>
+      <h2 class="section">The toolkit</h2>
+      <p class="lede">Books, downloads and tools I'm actually using. This shelf grows every week.</p>
+    </div>
+    <div class="res-grid" id="res-grid"></div>
+  </section>
+</div>
+
+<section id="notes" class="notes-band">
+  <div class="wrap notes">
+    <div class="intro">
+      <h2 class="section">Field notes</h2>
+      <p class="lede">What's working, what flopped, what surprised me. Updated as the experiment goes.</p>
+    </div>
+    <ol id="notes-list"></ol>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer class="bottom">
+    <form class="signup" id="signup" novalidate>
+      <div class="field">
+        <label for="email">Get each day's to-dos in your inbox</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+      </div>
+      <button class="btn btn-primary" type="submit">Count me in</button>
+      <p class="msg" id="signup-msg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="bio">if you're new here hi, i'm krista!! proof that building something big and getting older don't have to mean less fun. still squeezing in pocket-sized adventures. go find your fun today girlie!!</p>
+    <a class="ig" href="https://www.instagram.com/remotelykrista/" target="_blank" rel="noopener">@remotelykrista on Instagram</a>
+  </footer>
+</div>
+
+<dialog id="day-dialog" aria-labelledby="m-title">
+  <div class="m">
+    <div class="m-head">
+      <div>
+        <p class="eyebrow" id="m-date"></p>
+        <h2 id="m-title"></h2>
+      </div>
+      <button class="x" type="button" aria-label="Close" data-close>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div id="m-body" style="display:flex;flex-direction:column;gap:20px"></div>
+    <div class="m-nav">
+      <button class="prev" type="button" id="m-prev"></button>
+      <span></span>
+      <button class="next" type="button" id="m-next"></button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ============ SETTINGS ============ */
+const SHEET_ID = "1QaoKPxORSThV3a-67DcqPDO3IaUu2pN5l0bWKenqobw";
+const START = new Date(2026, 10, 1); // Day 1 = Nov 1, 2026
+const TOTAL = 60;
+const SUPABASE_URL = "https://heuqdyumhpjjsateitrd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_YAtZHIQ7xedKaH2Gxq25EA_wYO6ArhF";
+
+/* Backup content, shown only if the Google Sheet can't be reached */
+const FALLBACK = {
+  days: {
+    1: { title: "Gratitude", todos: ["Spend 10 minutes writing down everything you're thankful for", "Thank God ahead of time for what's coming your way, starting each one with \"i am so happy and grateful now that...\"", "Read Psalm 103:1-5"], prompt: "i am so happy and grateful now that...", verseRef: "Psalm 103:1-5 (ESV)", verse: "Bless the LORD, O my soul, and all that is within me, bless his holy name! Bless the LORD, O my soul, and forget not all his benefits, who forgives all your iniquity, who heals all your diseases, who redeems your life from the pit, who crowns you with steadfast love and mercy, who satisfies you with good so that your youth is renewed like the eagle's.", say: "remind me God how much you love me!!\nremind me God how amazing life can get!!" },
+    2: { title: "Script your ideal day", todos: ["Write HER full day from wake up to bedtime in present tense, as if it already happened (aim for 2 or more pages)", "Use all 5 senses: the espresso smell, the light through the windows, what you're wearing, who texts you, what money hits your account, how you feel walking into dinner", "Start it with \"Thank you, God, for...\"", "Bonus: turn your script into a video you can watch over and over"], prompt: "Thank you, God, for...", verseRef: "Proverbs 31:25", verse: "She is clothed with strength and dignity; she can laugh at the days to come.", say: "I am becoming her, one kept promise at a time.", how: "Here's what I did with mine. I used OpenArt to turn my ideal day into a video so I can watch it over and over. I fed it pics from my Pinterest mood boards plus what I was wanting, and it brought the whole day to life. Seeing HER on screen hits so different than just reading it!!", linkUrl: "https://openart.ai", linkLabel: "Try OpenArt" }
+  },
+  resources: [
+    { tag: "Free guide", title: "60 Days to HER: the guide", desc: "My whole framework to run your own version. Print it, journal in it, make it yours.", label: "Download free", url: "", featured: true },
+    { tag: "Book", title: "The Secret", desc: "Rhonda Byrne. Learn about how the law of attraction can change your life.", label: "Get the book", url: "https://link.amazon/B04BGMk30" },
+    { tag: "Bedtime", title: "Sleep affirmations", desc: "Press play, put your phone down and let these soak in while you fall asleep.", label: "Listen on YouTube", url: "https://www.youtube.com/watch?v=_WDzvn8tuXs" },
+    { tag: "Book", title: "The Master Key System", desc: "Charles F. Haanel. A 24-week course in training your mind to create the life you've been dreaming of.", label: "Get the book", url: "" },
+    { tag: "Breathwork", title: "9D Breathwork", desc: "Guided breathwork with immersive sound that takes you deep. Pop in your headphones and let it do its thing.", label: "Try 9D Breathwork", url: "https://tr.ee/m97sRPX9sT" }
+  ],
+  notes: [
+    { label: "Day 1 · Sun, Nov 1 · Gratitude", text: "EVERYTHING I have researched around manifestation talks about the importance of coming at everything in a state of gratitude. And I love this because of the studies behind how much gratitude can heal you.\n\nIn one study, people who wrote down what they were grateful for each week felt better about their lives, were more optimistic and even exercised more than people who wrote about their hassles. Adults with chronic illnesses who kept a daily gratitude list slept longer and woke up feeling more refreshed. And another study found that people who wrote gratitude letters showed more gratitude activity in their brains three months later!!\n\nSO TELL ME WHY everything I consumed today had the topic of gratitude without me meaning to. My YouTube affirmations, my breathwork session, the church service I went to, and even the part of The Secret I was reading were all talking about gratitude.\n\nSo that is why for today's task I decided to have gratitude journaling as the first to-do. How amazing!!" }
+  ],
+  settings: {}
+};
+
+/* ============ HELPERS ============ */
+const $ = (s, r = document) => r.querySelector(s);
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids.flat()) if (k != null) n.append(k);
+  return n;
+};
+const dateFor = n => { const d = new Date(START); d.setDate(d.getDate() + n - 1); return d; };
+const fmt = (d, o) => d.toLocaleDateString("en-US", o);
+const store = {
+  get(k, f) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : f; } catch { return f; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
+
+function parseCSV(text) {
+  const rows = []; let row = [], cur = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; }
+      else cur += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(cur); cur = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cur); rows.push(row); row = []; cur = "";
+    } else cur += c;
+  }
+  if (cur !== "" || row.length) { row.push(cur); rows.push(row); }
+  return rows;
+}
+async function fetchTab(name) {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(name)}&t=${Date.now()}`;
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error(name + " " + res.status);
+  const text = await res.text();
+  if (text.trim().startsWith("<")) throw new Error(name + " not public");
+  const [head, ...rest] = parseCSV(text);
+  return rest.filter(r => r.some(c => c.trim() !== ""));
+}
+const truthy = v => /^(true|yes|y|1|x)$/i.test(String(v).trim());
+
+async function loadContent() {
+  try {
+    const [days, res, notes, settings] = await Promise.all(["Days", "Resources", "Field Notes", "Settings"].map(fetchTab));
+    const D = {};
+    for (const r of days) {
+      const n = parseInt(r[0], 10); const title = (r[1] || "").trim();
+      if (!n || !title) continue;
+      D[n] = {
+        title, todos: r.slice(2, 8).map(s => s.trim()).filter(Boolean),
+        prompt: (r[8] || "").trim(), verseRef: (r[9] || "").trim(), verse: (r[10] || "").trim(),
+        say: (r[11] || "").trim(), how: (r[12] || "").trim(), linkUrl: (r[13] || "").trim(), linkLabel: (r[14] || "").trim()
+      };
+    }
+    const R = res.filter(r => (r[1] || "").trim()).map(r => ({ tag: r[0], title: r[1], desc: r[2], label: r[3], url: (r[4] || "").trim(), featured: truthy(r[5]) }));
+    const N = notes.filter(r => (r[2] || "").trim()).map(r => ({ day: parseInt(r[0], 10) || 0, label: (r[0] ? `Day ${r[0]} · ` : "") + (r[1] || ""), text: r[2] })).sort((a, b) => b.day - a.day);
+    const S = {}; for (const r of settings) if (r[0]) S[r[0].trim()] = (r[1] || "").trim();
+    return { days: D, resources: R, notes: N, settings: S };
+  } catch (e) {
+    console.warn("Using backup content:", e.message);
+    return FALLBACK;
+  }
+}
+
+/* ============ STATE ============ */
+let DATA = FALLBACK;
+let done = store.get("her60-done", {});
+let openDay = null;
+
+function todayNum() {
+  const p = new URLSearchParams(location.search).get("day");
+  if (p) return Math.max(1, Math.min(TOTAL, parseInt(p, 10) || 1));
+  const now = new Date(); now.setHours(0, 0, 0, 0);
+  return Math.max(1, Math.min(TOTAL, Math.round((now - START) / 864e5) + 1));
+}
+const beforeStart = () => { const now = new Date(); now.setHours(0,0,0,0); return now < START; };
+const weekLabel = n => `Week ${Math.ceil(n / 7)}`;
+function isDone(n) {
+  const d = DATA.days[n]; if (!d || !d.todos.length) return false;
+  return d.todos.every((_, i) => done[`${n}-${i}`]);
+}
+
+/* ============ RENDER ============ */
+function renderToday() {
+  const t = todayNum(), d = DATA.days[t];
+  $("#today-n").textContent = `Day ${t}`;
+  $("#today-bar").style.width = Math.round(t / TOTAL * 100) + "%";
+  $("#today-status").textContent = beforeStart() ? "Starts Nov 1" : `${weekLabel(t)} · ${fmt(dateFor(t), { weekday: "long", month: "short", day: "numeric" })}`;
+  $("#today-title").textContent = d ? d.title : "Coming soon";
+  const ul = $("#today-list"); ul.replaceChildren();
+  (d ? d.todos.slice(0, 3) : ["Today's to-dos drop soon"]).forEach(s => ul.append(el("li", { text: s })));
+}
+
+function renderCalendar() {
+  const t = todayNum(), box = $("#months"); box.replaceChildren();
+  const months = [];
+  for (let n = 1; n <= TOTAL; n++) { const d = dateFor(n); const key = d.getFullYear() * 12 + d.getMonth(); if (!months.includes(key)) months.push(key); }
+  for (const key of months) {
+    const y = Math.floor(key / 12), m = key % 12, first = new Date(y, m, 1), dim = new Date(y, m + 1, 0).getDate();
+    const grid = el("div", { class: "grid" });
+    for (let i = 0; i < first.getDay(); i++) grid.append(el("div", { class: "blank", "aria-hidden": "true" }));
+    for (let d = 1; d <= dim; d++) {
+      const n = Math.round((new Date(y, m, d) - START) / 864e5) + 1;
+      if (n < 1 || n > TOTAL) { grid.append(el("div", { class: "blank", "aria-hidden": "true", text: d })); continue; }
+      const has = !!DATA.days[n], fin = isDone(n);
+      const cls = ["day", n === t && !beforeStart() ? "today" : fin ? "done" : (!has || n > t) ? "future" : ""].join(" ");
+      const check = fin ? el("span", { "aria-hidden": "true", text: "✓" }) : null;
+      grid.append(el("button", {
+        type: "button", class: cls, onclick: () => openModal(n),
+        "aria-label": `Day ${n}, ${fmt(dateFor(n), { month: "long", day: "numeric" })}${n === t ? ", today" : ""}${has ? ": " + DATA.days[n].title : ", coming soon"}${fin ? ", finished" : ""}`
+      }, el("span", { class: "num", text: d }), el("span", { class: "lbl" }, check, `Day ${n}`)));
+    }
+    box.append(el("div", { class: "month" },
+      el("h3", { text: fmt(first, { month: "long", year: "numeric" }) }),
+      el("div", { class: "dow", "aria-hidden": "true" }, ..."Sun Mon Tue Wed Thu Fri Sat".split(" ").map(s => el("span", { text: s }))),
+      grid));
+  }
+}
+
+function renderResources() {
+  const g = $("#res-grid"); g.replaceChildren();
+  for (const r of DATA.resources) {
+    const soon = !r.url;
+    g.append(el("article", { class: `res${r.featured ? " featured" : ""}${soon ? " soon" : ""}` },
+      r.tag ? el("span", { class: "tag", text: r.tag }) : null,
+      el("h3", { text: r.title }),
+      el("p", { text: r.desc || "" }),
+      soon ? el("a", { class: "go", "aria-disabled": "true", text: "Link coming soon" })
+           : el("a", { class: "go", href: r.url, target: "_blank", rel: "noopener", text: r.label || "Open" })));
+  }
+  g.append(el("div", { class: "res more" },
+    el("p", { style: "margin:0;font-weight:600;color:var(--ink);flex:0", text: "More landing here soon" }),
+    el("p", { style: "margin:0;font-size:14px;flex:0", text: "New finds get added as I learn them." })));
+}
+
+function renderNotes() {
+  const ol = $("#notes-list"); ol.replaceChildren();
+  if (!DATA.notes.length) { ol.append(el("li", { class: "note" }, el("p", { text: "First note drops soon." }))); return; }
+  for (const n of DATA.notes) {
+    ol.append(el("li", { class: "note" },
+      el("span", { class: "eyebrow", text: n.label }),
+      ...n.text.split(/\n\s*\n/).map(p => el("p", { text: p.trim() }))));
+  }
+}
+
+function renderSettings() {
+  const s = DATA.settings || {};
+  if (s.playlist_name) $("#pl-name").textContent = s.playlist_name;
+  if (s.playlist_blurb) $("#pl-blurb").textContent = s.playlist_blurb;
+  const m = (s.playlist_url || "").match(/playlist\/([A-Za-z0-9]+)/);
+  if (m) {
+    $("#pl-link").href = `https://open.spotify.com/playlist/${m[1]}`;
+    const src = `https://open.spotify.com/embed/playlist/${m[1]}?utm_source=generator&theme=0`;
+    if ($("#pl-embed").src !== src) $("#pl-embed").src = src;
+  }
+}
+
+/* ============ MODAL ============ */
+const dlg = $("#day-dialog");
+function openModal(n) {
+  openDay = n;
+  const d = DATA.days[n], t = todayNum(), body = $("#m-body");
+  $("#m-date").textContent = `${weekLabel(n)} · ${fmt(dateFor(n), { weekday: "long", month: "long", day: "numeric" })}`;
+  $("#m-title").textContent = `Day ${n}: ${d ? d.title : "Coming soon"}`;
+  body.replaceChildren();
+  if (d) {
+    if (n > t) body.append(el("p", { class: "pill", text: `Sneak peek. This day officially unlocks ${fmt(dateFor(n), { weekday: "short", month: "short", day: "numeric" })}.` }));
+    if (d.todos.length) {
+      const list = el("div", {}, el("h4", { text: "To-dos" }));
+      d.todos.forEach((s, i) => {
+        const id = `todo-${n}-${i}`, key = `${n}-${i}`;
+        const box = el("input", { type: "checkbox", id, onchange: e => { done[key] = e.target.checked; store.set("her60-done", done); renderCalendar(); } });
+        box.checked = !!done[key];
+        list.append(el("div", { class: "todo" }, box, el("label", { for: id, text: s })));
+      });
+      body.append(list);
+    }
+    if (d.prompt) body.append(el("div", { class: "prompt" }, el("h4", { text: "Journal prompt" }), el("p", { text: d.prompt })));
+    if (d.verse) body.append(el("div", { class: "verse" }, el("h4", { text: d.verseRef || "Verse" }), el("p", { text: d.verse })));
+    if (d.how) body.append(el("div", { class: "how" }, el("h4", { text: "How I did it" }), el("p", { text: d.how }),
+      d.linkUrl ? el("a", { href: d.linkUrl, target: "_blank", rel: "noopener", text: d.linkLabel || "Check it out" }) : null));
+    if (d.say) body.append(el("div", { class: "say" }, el("h4", { text: "Say it out loud" }), el("p", { text: d.say })));
+  } else {
+    body.append(el("div", { class: "soon-card" },
+      el("p", { style: "font-weight:600;color:var(--ink);margin-bottom:6px", text: "Coming soon" }),
+      el("p", { text: `I fill these in as I live them, so check back on ${fmt(dateFor(n), { weekday: "short", month: "short", day: "numeric" })}.` })));
+  }
+  const prev = $("#m-prev"), next = $("#m-next");
+  prev.hidden = n <= 1; prev.textContent = `Day ${n - 1}`;
+  next.hidden = n >= TOTAL; next.textContent = `Day ${n + 1}`;
+  if (!dlg.open) dlg.showModal();
+  dlg.querySelector(".m").scrollTop = 0; dlg.scrollTop = 0;
+  history.replaceState(null, "", `#day-${n}`);
+}
+function closeModal() { dlg.close(); }
+dlg.addEventListener("close", () => { openDay = null; if (location.hash.startsWith("#day-")) history.replaceState(null, "", location.pathname + location.search); });
+dlg.addEventListener("click", e => { if (e.target === dlg) closeModal(); });
+$("[data-close]").addEventListener("click", closeModal);
+$("#m-prev").addEventListener("click", () => openModal(openDay - 1));
+$("#m-next").addEventListener("click", () => openModal(openDay + 1));
+document.querySelectorAll("[data-open-today]").forEach(b => b.addEventListener("click", () => openModal(todayNum())));
+
+/* ============ SIGNUP ============ */
+$("#signup").addEventListener("submit", async e => {
+  e.preventDefault();
+  const input = $("#email"), msg = $("#signup-msg"), btn = e.target.querySelector("button");
+  const email = input.value.trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = "Hmm, that email doesn't look right. Try again?"; input.focus(); return; }
+  btn.disabled = true; msg.textContent = "Adding you…";
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/her_hub_signups`, {
+      method: "POST",
+      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify({ email })
+    });
+    if (r.ok || r.status === 409) { msg.textContent = "You're in!! See you in your inbox 💛"; input.value = ""; }
+    else throw new Error(r.status);
+  } catch { msg.textContent = "Something glitched. Try again in a sec?"; }
+  btn.disabled = false;
+});
+
+/* ============ BOOT ============ */
+function renderAll() { renderToday(); renderCalendar(); renderResources(); renderNotes(); renderSettings(); }
+renderAll();
+loadContent().then(d => {
+  DATA = d; renderAll();
+  const m = location.hash.match(/^#day-(\d+)$/);
+  if (m) openModal(Math.max(1, Math.min(TOTAL, +m[1])));
+  else if (openDay) openModal(openDay);
+});
+</script>
+</body>
+</html>
