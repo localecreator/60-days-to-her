@@ -147,6 +147,9 @@ dialog::backdrop{background:rgba(42,22,48,.55)}
 .science{padding:20px;border-radius:18px;background:#FBF8FD;border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
 .science h4{margin:0;color:var(--plum)}
 .science p{margin:0;line-height:1.6;color:var(--ink-2)}
+.studies{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.studies ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.studies a{font-weight:600}
 .say p{margin:0;font-size:18px;font-style:italic;white-space:pre-line}
 .soon-card{padding:24px;border-radius:18px;border:1.5px dashed #CDBCD8;color:var(--ink-2)}
 .soon-card p{margin:0}
@@ -366,7 +369,7 @@ async function loadContent() {
       D[n] = {
         title, todos: r.slice(2, 8).map(s => s.trim()).filter(Boolean),
         prompt: (r[8] || "").trim(), verseRef: (r[9] || "").trim(), verse: (r[10] || "").trim(),
-        say: (r[11] || "").trim(), how: (r[12] || "").trim(), linkUrl: (r[13] || "").trim(), linkLabel: (r[14] || "").trim(), science: (r[15] || "").trim()
+        say: (r[11] || "").trim(), how: (r[12] || "").trim(), linkUrl: (r[13] || "").trim(), linkLabel: (r[14] || "").trim(), science: (r[15] || "").trim(), studies: (r[16] || "").split(/\n/).map(l => { const i = l.lastIndexOf("|"); return i < 0 ? null : { label: l.slice(0, i).trim(), url: l.slice(i + 1).trim() }; }).filter(x => x && /^https?:\/\//.test(x.url))
       };
     }
     const R = res.filter(r => (r[1] || "").trim()).map(r => ({ tag: r[0], title: r[1], desc: r[2], label: r[3], url: (r[4] || "").trim(), featured: truthy(r[5]) }));
@@ -496,7 +499,8 @@ function openModal(n) {
     if (d.verse) body.append(el("div", { class: "verse" }, el("h4", { text: d.verseRef || "Verse" }), el("p", { text: d.verse })));
     if (d.how) body.append(el("div", { class: "how" }, el("h4", { text: "How I did it" }), el("p", { text: d.how }),
       d.linkUrl ? el("a", { href: d.linkUrl, target: "_blank", rel: "noopener", text: d.linkLabel || "Check it out" }) : null));
-    if (d.science) body.append(el("div", { class: "science" }, el("h4", { text: "The science" }), ...d.science.split(/\n\s*\n/).map(t => el("p", { text: t.trim() }))));
+    if (d.science) body.append(el("div", { class: "science" }, el("h4", { text: "The science" }), ...d.science.split(/\n\s*\n/).map(t => el("p", { text: t.trim() })),
+      d.studies && d.studies.length ? el("div", { class: "studies" }, el("p", { class: "eyebrow", text: "Read the research" }), el("ul", {}, ...d.studies.map(x => el("li", {}, el("a", { href: x.url, target: "_blank", rel: "noopener", text: x.label }))))) : null));
     if (d.say) body.append(el("div", { class: "say" }, el("h4", { text: "Say it out loud" }), el("p", { text: d.say })));
   } else {
     body.append(el("div", { class: "soon-card" },
