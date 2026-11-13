@@ -135,6 +135,7 @@ dialog::backdrop{background:rgba(42,22,48,.55)}
 .todo{display:flex;align-items:center;gap:12px;min-height:44px;padding:6px 12px;border-radius:12px;background:#FBF8FD;margin-bottom:8px}
 .todo input{width:20px;height:20px;accent-color:var(--plum);flex:0 0 auto}
 .todo label{flex:1;cursor:pointer}
+.todo-link{font-weight:600;white-space:nowrap}
 .todo input:checked + label{color:var(--muted);text-decoration:line-through}
 .prompt{padding:20px;border-radius:18px;background:var(--lav)}
 .prompt h4{color:var(--plum)}
@@ -359,6 +360,17 @@ async function fetchTab(name) {
   const [head, ...rest] = parseCSV(text);
   return rest.filter(r => r.some(c => c.trim() !== ""));
 }
+const linkify = text => {
+  const out = []; let last = 0; const re = /https?:\/\/[^\s)]+/g; let m;
+  while ((m = re.exec(text))) {
+    const pre = text.slice(last, m.index).replace(/[:\s-]+$/, "");
+    if (pre) out.push(pre + " ");
+    out.push(el("a", { href: m[0], target: "_blank", rel: "noopener", class: "todo-link", text: "open it" }));
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out.length ? out : [text];
+};
 const truthy = v => /^(true|yes|y|1|x)$/i.test(String(v).trim());
 
 async function loadContent() {
@@ -502,7 +514,7 @@ function openModal(n) {
         const id = `todo-${n}-${i}`, key = `${n}-${i}`;
         const box = el("input", { type: "checkbox", id, onchange: e => { done[key] = e.target.checked; store.set("her60-done", done); renderCalendar(); } });
         box.checked = !!done[key];
-        list.append(el("div", { class: "todo" }, box, el("label", { for: id, text: s })));
+        list.append(el("div", { class: "todo" }, box, el("label", { for: id }, ...linkify(s))));
       });
       body.append(list);
     }
