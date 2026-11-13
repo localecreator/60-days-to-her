@@ -106,9 +106,20 @@ nav.links a:hover{background:var(--lav)}
 .notes{display:flex;flex-wrap:wrap;gap:48px;padding-top:72px;padding-bottom:72px}
 .notes .intro{flex:1 1 300px;min-width:0}
 .notes ol{flex:999 1 520px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
-.note{background:var(--card);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px}
-.note p{margin:0;font-size:18px}
-.note-full{display:flex;flex-direction:column;gap:14px}
+.note{background:var(--card);border-radius:24px;padding:clamp(22px,4vw,36px);display:flex;flex-direction:column;gap:16px}
+.note-head{display:flex;flex-direction:column;gap:6px;padding-bottom:4px}
+.note-title{font-family:var(--serif);font-size:clamp(28px,3.4vw,36px);line-height:1.05;color:var(--ink)}
+.note p{margin:0;font-size:17px;line-height:1.7;color:var(--ink-2)}
+.note p.teaser{color:var(--ink)}
+.note strong{color:var(--ink)}
+.note-full{display:flex;flex-direction:column;gap:16px;max-width:64ch}
+.note p.punch{font-family:var(--serif);font-size:24px;line-height:1.25;color:var(--ink)}
+.pull{margin:12px 0;padding:0 8px;text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(26px,3.4vw,34px);line-height:1.2;color:var(--plum)}
+.pull::before{content:"\201C";display:block;font-size:56px;line-height:.6;color:var(--lilac);font-style:normal;margin-bottom:6px}
+.step{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:16px;background:var(--lav)}
+.step-n{flex:0 0 auto;width:32px;height:32px;border-radius:999px;background:var(--plum);color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.step > div{display:flex;flex-direction:column;gap:6px}
+.note .step-h{font-weight:600;color:var(--ink)}
 .more-btn{align-self:flex-start;min-height:44px;padding:8px 0;border:0;background:none;color:var(--plum);font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 
 /* signup */
@@ -467,22 +478,47 @@ function renderResources() {
     el("p", { style: "margin:0;font-size:14px;flex:0", text: "New finds get added as I learn them." })));
 }
 
+function richText(text) {
+  const out = []; let last = 0; const re = /\*\*(.+?)\*\*/g; let m;
+  while ((m = re.exec(text))) { if (m.index > last) out.push(text.slice(last, m.index)); out.push(el("strong", { text: m[1] })); last = m.index + m[0].length; }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+function notePara(p) {
+  if (/^>\s?/.test(p)) return el("blockquote", { class: "pull" }, ...richText(p.replace(/^>\s?/, "").replace(/^["“]|["”]$/g, "")));
+  const step = p.match(/^(\d+)[).]\s+([\s\S]*)$/);
+  if (step) {
+    const [, num, rest] = step; const dot = rest.search(/[.!?](\s|$)/);
+    const head = dot > 0 && dot < 90 ? rest.slice(0, dot + 1) : ""; const body = head ? rest.slice(dot + 1).trim() : rest;
+    return el("div", { class: "step" }, el("span", { class: "step-n", "aria-hidden": "true", text: num }),
+      el("div", {}, head ? el("p", { class: "step-h" }, ...richText(head)) : null, body ? el("p", {}, ...richText(body)) : null));
+  }
+  const short = p.length < 70 && /[.!?]["”]?$/.test(p) && !/^\(/.test(p);
+  return el("p", { class: short ? "punch" : null }, ...richText(p));
+}
 function renderNotes() {
   const ol = $("#notes-list"); ol.replaceChildren();
   if (!DATA.notes.length) { ol.append(el("li", { class: "note" }, el("p", { text: "First note drops soon." }))); return; }
   for (const n of DATA.notes) {
+    const parts = n.label.split(/\s*·\s*/).filter(Boolean);
+    const title = parts.length >= 3 ? parts.pop() : "";
+    const meta = parts.join(" · ");
     const paras = n.text.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
-    const sentences = paras[0].match(/[^.!?]+[.!?]+["')\]]*\s*|[^.!?]+$/g) || [paras[0]];
+    const first = paras[0].replace(/^>\s?/, "");
+    const sentences = first.match(/[^.!?]+[.!?]+["')\]”]*\s*|[^.!?]+$/g) || [first];
     const teaser = sentences.slice(0, 2).join("").trim();
     const needsMore = paras.length > 1 || sentences.length > 2;
-    const full = el("div", { class: "note-full", hidden: needsMore }, ...paras.map(p => el("p", { text: p })));
-    const preview = needsMore ? el("p", { text: teaser }) : null;
+    const full = el("div", { class: "note-full", hidden: needsMore }, ...paras.map(notePara));
+    const preview = needsMore ? el("p", { class: "teaser" }, ...richText(teaser)) : null;
     const btn = needsMore ? el("button", { type: "button", class: "more-btn", "aria-expanded": "false", text: "Read more" }) : null;
     if (btn) btn.addEventListener("click", () => {
       const open = full.hidden; full.hidden = !open; preview.hidden = open;
       btn.textContent = open ? "Show less" : "Read more"; btn.setAttribute("aria-expanded", String(open));
+      if (!open) btn.closest(".note").scrollIntoView({ block: "nearest", behavior: "smooth" });
     });
-    ol.append(el("li", { class: "note" }, el("span", { class: "eyebrow", text: n.label }), preview, full, btn));
+    ol.append(el("li", { class: "note" },
+      el("div", { class: "note-head" }, el("span", { class: "eyebrow", text: meta }), title ? el("h3", { class: "note-title", text: title }) : null),
+      preview, full, btn));
   }
 }
 
